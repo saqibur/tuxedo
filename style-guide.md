@@ -1,49 +1,140 @@
 # Style Guide
 
-# Spacing
+## Imports
 
-## Methods
-Class methods should always be preceded by `two` newlines. In terms, of
-readability this allows you to visually separate method definitions.
+### Proposal
+When writing imports, be sure to group related ones, sort alphanumerically and
+format to produce the smallest diffs when adding/updating new imports.
 
-## Functions
-Functions in modules should also be preceded by `two` newlines. The only case
-where this does not apply is when using a closure. In the case of a closure,
-the function should isolate itself with a preceding and proceeding newline.
+After imports, there should be at least two new lines (or follow newline rule
+for classes and functions).
 
-# TODO: This is controversial
+Absolutely always use explicit imports and never relative imports. They're
+ALWAYS a bad idea.
+
+### Rationale
+
+### Example
+```python
+# Python imports
+import os
+import time
+
+# Framework imports
+from django.db import models
+from rest_framework.permissions import (
+    BasePermission,
+    IsAuthenticated,
+)
+
+# 3rd Party Library (non-framework) imports
+import requests
+
+# Project-specific imports
+from my_module import function
+```
+Here, imports are grouped together, and when importing multiple things from a
+module, we're splitting across new lines thereby producing smaller diffs when
+changed somewhere down the line.
+
+
+Further, multiple imports should be broken into newlines.
+
+TODO: Finally, import functions after importing classes, not before.
+
+
+
+## Spacing Between Classes, Functions and Methods
+### Proposal
+Add three newlines before starting a new class.
+
+Add two newlines before starting a new method or function (unless the function
+is a closure).
+
+### Rationale
+In terms, of readability this allows you to visually separate method
+definitions. In the case of a closure, the function should isolate itself with a
+preceding and proceeding newline.
 
 What this also allows us to do is space out lines within functions as much as we
 need wherever readability is required without worrying about space between
 independent functions themselves.
 
-## Imports
-Like PEP-8, imports should be separated in the following way:
-import standard_libraries
+### Example
+```python
+class FirstClass:
+    pass
 
-import installed_libraries
 
-import project_libraries
 
-With a newline separating each section.
+class SecondClass:
+    pass
 
-Further, multiple imports should be broken into newlines. Finally, import
-functions after importing classes, not before.
 
-Add two newlines after imports
+    def first_method(self):
+      pass
 
-## Exceptions
+
+    def second_method(self):
+      pass
+
+
+    def third_method(self):
+      print("Do something")
+      def closure():
+        pass
+
+      closure()
+      pass
+
+
+def first_function():
+  pass
+
+
+def second_function():
+  pass
+```
+
+
+## Single vs. Double Quotes
+### Proposal
+If the string is an identifier, use single quotes. If it is a proper string or
+f-string, use double quotes.
+
+
+## Function Arguments
+### Proposal
+- Keyword arguments should follow the same order as the function definition.
+- When writing new function definitions - sort alphabetically, or by importance.
+
+### Rationale
+### Example
+
+
+
+### Rationale
+### Example
+
+## Unused Arguments
+
+
+
+### Exceptions
+### Proposal
+Libraries or packages may define their own exceptions. When doing so they must
+inherit from an existing exception class. Exception names should end in Error
+and should not introduce repetition (foo.FooError).
+
 Always treat general `Exceptions` as `exn` and not `e`
 
+### Rationale
+### Example
 
-## Strings
-If identifier, use single quotes. If a proper string, formatted or otherwise,
-using double quotes.
 
-## Keyword Arguments
-They should appear as in the order represented by the function definition, so
-you are able to follow along seamlessly without looking back.
 
+## Imports
+## Exceptions
 
 
 
@@ -59,30 +150,6 @@ def viking_cafe_order(spam: str, beans: str, eggs: Optional[str] = None) -> str:
     return spam + spam + spam
 Other common forms of suppressing this warning include using ‘_ as the identifier for the unused argument or prefixing the argument name with ‘unused_’, or assigning them to ‘_’. These forms are allowed but no longer encouraged. These break callers that pass arguments by name and do not enforce that the arguments are actually unused.
 
-
-NEVER use relative imports
-Do not use relative names in imports. Even if the module is in the same package, use the full package name. This helps prevent unintentionally importing a package twice.
-
-2.3.3 Decision
-All new code should import each module by its full package name.
-
-Imports should be as follows:
-
-Yes:
-  # Reference absl.flags in code with the complete name (verbose).
-  import absl.flags
-  from doctor.who import jodie
-
-  FLAGS = absl.flags.FLAGS
-Yes:
-  # Reference flags in code with just the module name (common).
-  from absl import flags
-  from doctor.who import jodie
-
-  FLAGS = flags.FLAGS
-
-
-  Libraries or packages may define their own exceptions. When doing so they must inherit from an existing exception class. Exception names should end in Error and should not introduce repetition (foo.FooError).
 
 
 Exceptions must follow certain conditions:

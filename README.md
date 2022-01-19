@@ -1,9 +1,11 @@
-# Tuxedo
-This is an opinionated style guide, derived from PEP-8 and personal experiences.
+# tuxedo
+This is an opinionated Python style guide, derived from PEP-8 and personal
+experiences.
 
-Tuxedo serves hopes to achieve to main goals:
-1. Writing a comprehensive style guide for my Python projects
-1. Writing a linter that automates everything dictated in this style guide
+Tuxedo serves hopes to achieve two main goals:
+1. Writing a comprehensive style guide for my Python projects (the easy part)
+1. Writing a linter that automates everything dictated in this style guide (the
+hard part)
 
 
 ## Rationale
