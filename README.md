@@ -1,17 +1,12 @@
 # tuxedo
-This is an opinionated Python style guide, derived from PEP-8 and personal
-experiences.
+Opinionated style and contributing guidelines, derived from best practices and
+personal experiences.
 
-Tuxedo serves hopes to achieve two main goals:
-1. Writing a comprehensive style guide for my Python projects (the easy part)
-1. Writing a linter that automates everything dictated in this style guide (the
-hard part)
-
-
-## Rationale
-As this is meant to be referential material for myself, it contains proper
-examples for every use-case.
-
+## Quick Links
+1. [Contributing Guidelines]()
+1. [Python Style Guide]() --- or --- just use the
+[Black](https://black.readthedocs.io/en/stable/the_black_code_style/current_style.html)
+formatter.
 
 ## Philosophy
 > "Simplicity over readability, readability over everything else"
